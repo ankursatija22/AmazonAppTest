@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AmazonAppAutomation">
+	<test thread-count="5" name="Amazon App">
+		<classes>
+			<class name="com.amazon.DriverScripts.TestCaseExecutionScript" />
+			<methods>
+				<include name="loginIntoAmazonApp" />
+				<include name="verifylogiFunctionality" />
+				<include name="searchProductFromAppFunctionality" />
+				<include name="selectRandomProductFromLListFunctionality" />
+				<include name="verifyProductPriceAtCheckoutFunctionality" />
+			</methods>
+		</classes>
+	</test> <!-- Amazon App -->
+</suite> <!-- AmazonAppAutomation -->
