@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [AmazonAppAutomation]">
+  <test name="Amazon App(failed)">
+    <classes>
+      <class name="com.amazon.DriverScripts.TestCaseExecutionScript">
+        <methods>
+          <include name="verifyProductPriceAtCheckoutFunctionality"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.amazon.DriverScripts.TestCaseExecutionScript -->
+    </classes>
+  </test> <!-- Amazon App(failed) -->
+</suite> <!-- Failed suite [AmazonAppAutomation] -->

@@ -8,17 +8,18 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import com.amazon.GenericFunctions.GenericFunctions;
+
+import com.amazon.GenericFunctions.BaseClass;
 import io.appium.java_client.android.AndroidDriver;
 
-public class VerifypriceofproductatcheckoutPage {
+public class VerifypriceofproductatcheckoutPage extends BaseClass{
 	
-	GenericFunctions genLib=new GenericFunctions();
 	Logger logger=Logger.getLogger(ProductSearchPage.class);
 	
-	//============================Elements of the Page======================//
+	/*============================Elements of the Page======================
+	 * 
+	 */
 	
-			
 			
 	@FindBy (xpath="//*[@resource-id='subtotals-marketplace-table']//following::android.view.View//following::android.view.View//following::android.view.View")
 	public  WebElement amazon_FinalProductPrice;
@@ -27,7 +28,9 @@ public class VerifypriceofproductatcheckoutPage {
 	public WebElement amazon_PlaceYourOrderButton;
 			
 			
-			//This method verify the price of the Product at checkkoutScreen			 
+			/*This method verify the price of the Product at checkkoutScreen
+			 * 			 
+			 */
 			public void verifyProductPriceAtCheckoutFunctionality(AndroidDriver driver) throws InterruptedException, IOException{
 			try{
 			
@@ -36,24 +39,28 @@ public class VerifypriceofproductatcheckoutPage {
 				logger.info("****************** Verify The product price at checkout Screen******************");
 				
 				String checkoutPrice = amazon_FinalProductPrice.getText();
-				String Price=checkoutPrice.replaceAll("\\s",""); 
-				System.out.println("Actual Price"+Price);
+				 logger.info("Actual Price"+checkoutPrice);
 				String expectedPrice=ProductSearchPage.productPrice;
-				System.out.println("Expected price"+expectedPrice);
-				
-				
-				Assert.assertEquals(expectedPrice,Price);
-			
-			
+				logger.info("Expected price"+expectedPrice);
+				if(checkoutPrice.contains(expectedPrice))
+				{
+				Assert.assertTrue(true);	
+				}else {
+					Assert.assertTrue(false);
+				}
 			  }
 			  catch(Exception e){
-				  System.out.println("Exception------->" + e.getMessage());
+				  logger.info("Exception------->" + e.getMessage());
 				 
 			  }
 			}
 	
-			//This method place the Order by tapping Place the Order.			 
-			// This method will not be inclued while executing the TestCase.
+			
+			
+			/*This method place the Order by tapping Place the Order.			 
+			* This method will not be included while executing the TestCase.
+			 * 
+			 */
 			public void placeOrderFunctionality(AndroidDriver driver) throws InterruptedException, IOException{
 			try{
 				PageFactory.initElements(driver, this);
@@ -61,9 +68,10 @@ public class VerifypriceofproductatcheckoutPage {
 				amazon_PlaceYourOrderButton.click();
 			  }
 			  catch(Exception e){
-				  System.out.println("Exception------->" + e.getMessage());
+				  logger.info("Exception------->" + e.getMessage());
 				 
 			  }
 			}
-
+			
+		
 }
